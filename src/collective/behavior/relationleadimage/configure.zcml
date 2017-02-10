@@ -1,0 +1,61 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="collective.behavior.relationleadimage">
+
+  <i18n:registerTranslations directory="locales" />
+
+  <includeDependencies package="." />
+
+  <include package=".browser" />
+
+
+  <genericsetup:registerProfile
+      name="default"
+      title="collective.behavior.relationleadimage"
+      directory="profiles/default"
+      description="Installs the collective.behavior.relationleadimage add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.post_install"
+      />
+
+  <genericsetup:importStep
+      name="collective.behavior.relationleadimage-postInstall"
+      title="collective.behavior.relationleadimage post_install import step"
+      description="Post install import step from collective.behavior.relationleadimage"
+      handler=".setuphandlers.post_install">
+  </genericsetup:importStep>
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="collective.behavior.relationleadimage (uninstall)"
+      directory="profiles/uninstall"
+      description="Uninstalls the collective.behavior.relationleadimage add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.uninstall"
+      />
+
+  <genericsetup:importStep
+      name="collective.behavior.relationleadimage-uninstall"
+      title="collective.behavior.relationleadimage uninstall import step"
+      description="Import step run during uninstallation of collective.behavior.relationleadimage"
+      handler=".setuphandlers.uninstall">
+  </genericsetup:importStep>
+
+  <utility
+      factory=".setuphandlers.HiddenProfiles"
+      name="collective.behavior.relationleadimage-hiddenprofiles" />
+
+  <include package="plone.behavior" file="meta.zcml"/>
+
+  <plone:behavior
+    title="Relation Lead Image"
+    description="A Lead Image field that can be pointed to an existing content item of type Image."
+    provides=".behavior.IRelationLeadImage"
+    factory=".behavior.RelationLeadImage"
+    for="plone.dexterity.interfaces.IDexterityContent"
+    marker=".behavior.IRelationLeadImage"
+    />
+
+</configure>
