@@ -1,5 +1,6 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     xmlns:plone="http://namespaces.plone.org/plone"
@@ -16,7 +17,7 @@
       name="default"
       title="collective.behavior.relationleadimage"
       directory="profiles/default"
-      description="Installs the collective.behavior.relationleadimage add-on."
+      description="Installs the Relation Lead Image behavior for Dexterity content types."
       provides="Products.GenericSetup.interfaces.EXTENSION"
       post_handler=".setuphandlers.post_install"
       />
@@ -53,10 +54,22 @@
   <plone:behavior
     title="Relation Lead Image"
     description="A Lead Image field that can be pointed to an existing image content item."
-    provides=".behavior.IRelationLeadImage"
+    provides=".interfaces.IRelationLeadImage"
     factory=".behavior.RelationLeadImage"
     for="plone.dexterity.interfaces.IDexterityContent"
-    marker=".behavior.IRelationLeadImage"
+    marker=".interfaces.ICollectiveBehaviorRelationleadimageLayer"
     />
+
+  <configure package='plone.app.contenttypes.behaviors'>
+  <browser:viewlet
+    name="contentleadimage"
+    for="collective.behavior.relationleadimage.interfaces.ICollectiveBehaviorRelationleadimageLayer"
+    view="plone.app.layout.globals.interfaces.IViewView"
+    class="collective.behavior.relationleadimage.browser.viewlets.LeadImageViewlet"
+    manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
+    template="leadimage.pt"
+    permission="zope2.View"
+    />
+  </configure>
 
 </configure>

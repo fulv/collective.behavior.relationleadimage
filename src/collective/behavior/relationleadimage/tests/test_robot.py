@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
+from collective.behavior.relationleadimage.testing import COLLECTIVE_BEHAVIOR_RELATIONLEADIMAGE_ACCEPTANCE_TESTING as CBRLIAT  # noqa
 from plone.app.testing import ROBOT_TEST_LEVEL
 from plone.testing import layered
-from collective.behavior.relationleadimage.testing import COLLECTIVE_BEHAVIOR_RELATIONLEADIMAGE_ACCEPTANCE_TESTING  # noqa
 
 import os
 import robotsuite
@@ -22,7 +22,7 @@ def test_suite():
         suite.addTests([
             layered(
                 robottestsuite,
-                layer=COLLECTIVE_BEHAVIOR_RELATIONLEADIMAGE_ACCEPTANCE_TESTING
+                layer=CBRLIAT
             ),
         ])
     return suite

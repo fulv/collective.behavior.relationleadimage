@@ -23,6 +23,7 @@ class CollectiveBehaviorRelationleadimageLayer(PloneSandboxLayer):
     def setUpPloneSite(self, portal):
         applyProfile(portal, 'collective.behavior.relationleadimage:default')
 
+
 CBRLIFIX = CollectiveBehaviorRelationleadimageLayer()
 COLLECTIVE_BEHAVIOR_RELATIONLEADIMAGE_FIXTURE = CBRLIFIX
 
