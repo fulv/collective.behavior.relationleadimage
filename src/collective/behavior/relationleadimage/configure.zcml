@@ -2,6 +2,7 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="collective.behavior.relationleadimage">
 
   <i18n:registerTranslations directory="locales" />
@@ -51,7 +52,7 @@
 
   <plone:behavior
     title="Relation Lead Image"
-    description="A Lead Image field that can be pointed to an existing content item of type Image."
+    description="A Lead Image field that can be pointed to an existing image content item."
     provides=".behavior.IRelationLeadImage"
     factory=".behavior.RelationLeadImage"
     for="plone.dexterity.interfaces.IDexterityContent"

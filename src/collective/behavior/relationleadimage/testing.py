@@ -23,25 +23,25 @@ class CollectiveBehaviorRelationleadimageLayer(PloneSandboxLayer):
     def setUpPloneSite(self, portal):
         applyProfile(portal, 'collective.behavior.relationleadimage:default')
 
-
-COLLECTIVE_BEHAVIOR_RELATIONLEADIMAGE_FIXTURE = CollectiveBehaviorRelationleadimageLayer()
+CBRLIFIX = CollectiveBehaviorRelationleadimageLayer()
+COLLECTIVE_BEHAVIOR_RELATIONLEADIMAGE_FIXTURE = CBRLIFIX
 
 
 COLLECTIVE_BEHAVIOR_RELATIONLEADIMAGE_INTEGRATION_TESTING = IntegrationTesting(
-    bases=(COLLECTIVE_BEHAVIOR_RELATIONLEADIMAGE_FIXTURE,),
+    bases=(CBRLIFIX,),
     name='CollectiveBehaviorRelationleadimageLayer:IntegrationTesting'
 )
 
 
 COLLECTIVE_BEHAVIOR_RELATIONLEADIMAGE_FUNCTIONAL_TESTING = FunctionalTesting(
-    bases=(COLLECTIVE_BEHAVIOR_RELATIONLEADIMAGE_FIXTURE,),
+    bases=(CBRLIFIX,),
     name='CollectiveBehaviorRelationleadimageLayer:FunctionalTesting'
 )
 
 
 COLLECTIVE_BEHAVIOR_RELATIONLEADIMAGE_ACCEPTANCE_TESTING = FunctionalTesting(
     bases=(
-        COLLECTIVE_BEHAVIOR_RELATIONLEADIMAGE_FIXTURE,
+        CBRLIFIX,
         REMOTE_LIBRARY_BUNDLE_FIXTURE,
         z2.ZSERVER_FIXTURE
     ),
