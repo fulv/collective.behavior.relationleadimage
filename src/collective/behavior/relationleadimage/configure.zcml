@@ -55,21 +55,8 @@
     title="Relation Lead Image"
     description="A Lead Image field that can be pointed to an existing image content item."
     provides=".interfaces.IRelationLeadImage"
-    factory=".behavior.RelationLeadImage"
-    for="plone.dexterity.interfaces.IDexterityContent"
-    marker=".interfaces.ICollectiveBehaviorRelationleadimageLayer"
+    factory=".behavior.relationLeadImage_factory"
+    marker=".interfaces.IRelationLeadImageMarker"
     />
-
-  <configure package='plone.app.contenttypes.behaviors'>
-  <browser:viewlet
-    name="contentleadimage"
-    for="collective.behavior.relationleadimage.interfaces.ICollectiveBehaviorRelationleadimageLayer"
-    view="plone.app.layout.globals.interfaces.IViewView"
-    class="collective.behavior.relationleadimage.browser.viewlets.LeadImageViewlet"
-    manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
-    template="leadimage.pt"
-    permission="zope2.View"
-    />
-  </configure>
 
 </configure>

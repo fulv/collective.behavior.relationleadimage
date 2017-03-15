@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
+from Acquisition import Explicit
 from collective.behavior.relationleadimage.interfaces import IRelationLeadImage
-from plone.dexterity.interfaces import IDexterityContent
 from plone.namedfile.interfaces import IImageScaleTraversable
-from zope.component import adapter
+from zope.annotation import IAnnotations
 from zope.interface import implementer
 
 
-@implementer(IRelationLeadImage, IImageScaleTraversable)
-@adapter(IDexterityContent)
-class RelationLeadImage(object):
+@implementer(IRelationLeadImage, IImageScaleTraversable, IAnnotations)
+class RelationLeadImage(Explicit):
 
     def __init__(self, context):
         self.context = context
@@ -21,7 +20,7 @@ class RelationLeadImage(object):
         image = getattr(self.context.image_relation, 'to_object', None)
 
         if image:
-            return image.image
+            return image
         return None
 
     @property
@@ -39,3 +38,8 @@ class RelationLeadImage(object):
     @image_caption.setter
     def image_caption(self, value):
         self.context.image_caption = value
+
+
+def relationLeadImage_factory(context):
+    adapter = RelationLeadImage(context)
+    return adapter.__of__(context)

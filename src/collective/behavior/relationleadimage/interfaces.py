@@ -8,12 +8,17 @@ from plone.autoform.interfaces import IFormFieldProvider
 from plone.supermodel import model
 from z3c.relationfield.schema import RelationChoice
 from zope import schema
+from zope.interface import Interface
 from zope.interface import provider
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
 
 class ICollectiveBehaviorRelationleadimageLayer(IDefaultBrowserLayer):
     """Marker interface that defines a browser layer."""
+
+
+class IRelationLeadImageMarker(Interface):
+    """Marker interface for type accepting RelationLeadImage"""
 
 
 @provider(IFormFieldProvider)
