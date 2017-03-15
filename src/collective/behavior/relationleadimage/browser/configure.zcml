@@ -18,4 +18,16 @@
       directory="static"
       />
 
+  <configure package='plone.app.contenttypes'>
+    <browser:viewlet
+      name="contentleadimage"
+      for="collective.behavior.relationleadimage.interfaces.IRelationLeadImageMarker"
+      view="plone.app.layout.globals.interfaces.IViewView"
+      class="collective.behavior.relationleadimage.browser.viewlets.LeadImageViewlet"
+      manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
+      template="behaviors/leadimage.pt"
+      permission="zope2.View"
+      />
+  </configure>
+
 </configure>

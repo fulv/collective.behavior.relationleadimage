@@ -10,3 +10,4 @@ class LeadImageViewlet(ViewletBase):
         image = IRelationLeadImage(self.context).image
 
         self.available = True if image else False
+        self.context = image
