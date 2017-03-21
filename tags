@@ -1,0 +1,10 @@
+Changelog	CHANGES.rst	1
+Contributors	CONTRIBUTORS.rst	1
+_final_version	bootstrap-buildout.py	/^    def _final_version(parsed_version):$/
+defaults	buildout.cfg	50
+exclude	buildout.cfg	32
+extends	buildout.cfg	2
+ignore	setup.cfg	2
+recipe	buildout.cfg	48
+recipe	buildout.cfg	61
+setuptools	requirements.txt	1

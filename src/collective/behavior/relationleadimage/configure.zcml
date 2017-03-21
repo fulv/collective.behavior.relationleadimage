@@ -51,12 +51,34 @@
 
   <include package="plone.behavior" file="meta.zcml"/>
 
+  <!--
   <plone:behavior
     title="Relation Lead Image"
     description="A Lead Image field that can be pointed to an existing image content item."
     provides=".interfaces.IRelationLeadImage"
-    factory=".behavior.relationLeadImage_factory"
+    factory=".behavior.LeadImage"
     marker=".interfaces.IRelationLeadImageMarker"
+    />
+    -->
+
+  <!--
+  <plone:behavior
+    title="LeadImage2"
+    provides="plone.app.contenttypes.behaviors.leadimage.ILeadImage"
+    />
+    -->
+
+  <!--
+  <adapter
+    for=".interfaces.IRelationLeadImageMarker"
+    provides="plone.app.contenttypes.behaviors.leadimage.ILeadImage"
+    factory=".behavior.relationLeadImage_factory"
+    />
+    -->
+
+  <adapter
+    factory=".behavior.LeadImage"
+    provides=".interfaces.IRelationLeadImage"
     />
 
 </configure>
