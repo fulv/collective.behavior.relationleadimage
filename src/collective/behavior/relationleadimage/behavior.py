@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 from Acquisition import Explicit
 from collective.behavior.relationleadimage.interfaces import IRelationLeadImage
+from plone.app.contenttypes.behaviors.leadimage import ILeadImage
 from plone.namedfile.interfaces import IImageScaleTraversable
 from zope.annotation import IAnnotations
+from zope.interface import adapter
 from zope.interface import implementer
 
 
@@ -41,5 +43,5 @@ class RelationLeadImage(Explicit):
 
 
 def relationLeadImage_factory(context):
-    adapter = RelationLeadImage(context)
-    return adapter.__of__(context)
+    _adapter = RelationLeadImage(context)
+    return _adapter.__of__(context)
